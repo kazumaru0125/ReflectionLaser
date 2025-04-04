@@ -9,6 +9,8 @@ TagManager:
   - floor
   - Wall
   - Bullet
+  - Door
+  - NoDeleteObject
   layers:
   - Default
   - TransparentFX

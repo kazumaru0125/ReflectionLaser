@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour
     {
     //PlayerÇÃStateä÷åW
     private IPlayerState       currentState;
-    public PlayerIdlingState   idleState = new PlayerIdlingState();
-    public PlayerMovingState   movingState = new PlayerMovingState();
-    public PlayerShootingState shootingState = new PlayerShootingState();
-    public PlayerGuidingState  guidingState = new PlayerGuidingState();
-    public PlayerDyingState    dyingState = new PlayerDyingState();
+    public PlayerIdlingState   idleState      = new PlayerIdlingState();
+    public PlayerMovingState   movingState    = new PlayerMovingState();
+    public PlayerShootingState shootingState  = new PlayerShootingState();
+    public PlayerGuidingState  guidingState   = new PlayerGuidingState();
+    public PlayerDyingState    dyingState     = new PlayerDyingState();
 
     //äOïîClass
     private GaugeController gaugeController; // HPä«óùÉNÉâÉX

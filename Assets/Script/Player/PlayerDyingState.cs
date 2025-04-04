@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerIdlingState : IPlayerState
-{
+
+public class PlayerDyingState : IPlayerState
+    {
     public void EnterState(PlayerController player)
         {
-       // Debug.Log("Entered Idle State");
+        Debug.Log("Entered Dyuing State €–SŒxˆ—ŠJn");
         }
 
     public void UpdateState(PlayerController player)
         {
-        // ‰½‚à‚µ‚È‚¢i‘Ò‹@j
+    
         }
 
     public void ExitState(PlayerController player)
         {
-       // Debug.Log("Exiting Idle State");
+        Debug.Log("ExitingDyuing State €–SŒxˆ—I—¹");
         }
     }

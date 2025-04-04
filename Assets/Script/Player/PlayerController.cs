@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
     {
-    private IPlayerState currentState;
-    public PlayerIdlingState idleState = new PlayerIdlingState();
-    public PlayerMovingState movingState = new PlayerMovingState();
+    //PlayerのState関係
+    private IPlayerState       currentState;
+    public PlayerIdlingState   idleState = new PlayerIdlingState();
+    public PlayerMovingState   movingState = new PlayerMovingState();
     public PlayerShootingState shootingState = new PlayerShootingState();
-    public PlayerGuidingState guidingState = new PlayerGuidingState();
+    public PlayerGuidingState  guidingState = new PlayerGuidingState();
+    public PlayerDyingState    dyingState = new PlayerDyingState();
+
+    //外部Class
+    private GaugeController gaugeController; // HP管理クラス
 
     private bool isClickDown = false; // 左クリックが押されているか
 
@@ -28,6 +33,15 @@ public class PlayerController : MonoBehaviour
             {
             Debug.LogError("Idle state is not assigned.");
             }
+
+
+              gaugeController = FindObjectOfType<GaugeController>(); // HP管理クラスを取得
+        if (gaugeController == null)
+            {
+            Debug.LogError("GaugeControllerが見つかりません！");
+            return;
+            }
+
         }
 
     private void Update()
@@ -40,6 +54,12 @@ public class PlayerController : MonoBehaviour
             {
             Debug.LogError("Current state is null!");
             return;
+            }
+
+        if (gaugeController.GetCurrentHP() <= 0)
+            {
+            //死亡警告状態に切り替え
+             ChangeState(dyingState);
             }
 
         // 左クリックが押されている間、GuideState に遷移
@@ -55,18 +75,36 @@ public class PlayerController : MonoBehaviour
                 Debug.LogError("Guiding state is not assigned.");
                 }
             }
+        //if (Input.GetMouseButtonUp(0))
+        //    {
+        //    isClickDown = false;
+        //    if (idleState != null)
+        //        {
+        //        ChangeState(idleState); // 左クリックを離したら Idle 状態に戻る
+        //        }
+        //    else
+        //        {
+        //        Debug.LogError("Idle state is not assigned.");
+        //        }
+        //    }
+
+
         if (Input.GetMouseButtonUp(0))
             {
             isClickDown = false;
-            if (idleState != null)
+            if (currentState != dyingState) // Dying状態ではないときのみIdleへ
                 {
-                ChangeState(idleState); // 左クリックを離したら Idle 状態に戻る
-                }
-            else
-                {
-                Debug.LogError("Idle state is not assigned.");
+                if (idleState != null)
+                    {
+                    ChangeState(idleState); // 左クリックを離したら Idle 状態に戻る
+                    }
+                else
+                    {
+                    Debug.LogError("Idle state is not assigned.");
+                    }
                 }
             }
+
 
         // 右クリックが押された場合、かつ左クリックが押されている場合に Shooting 状態に遷移
         if (isClickDown && Input.GetMouseButtonDown(1))

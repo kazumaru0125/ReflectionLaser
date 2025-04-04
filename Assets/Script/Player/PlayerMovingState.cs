@@ -6,7 +6,7 @@ public class PlayerMovingState : IPlayerState
 {
     public void EnterState(PlayerController player)
         {
-        Debug.Log("Entered Moving State");
+       // Debug.Log("Entered Moving State");
         }
 
     public void UpdateState(PlayerController player)
@@ -19,6 +19,6 @@ public class PlayerMovingState : IPlayerState
 
     public void ExitState(PlayerController player)
         {
-        Debug.Log("Exiting Moving State");
+       // Debug.Log("Exiting Moving State");
         }
     }

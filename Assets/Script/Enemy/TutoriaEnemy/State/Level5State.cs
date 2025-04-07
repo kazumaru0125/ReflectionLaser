@@ -11,6 +11,8 @@ public class Level5State : ITutorialEnemy
     private const float speed = 2f;
     private Transform player; // プレイヤーのTransform
 
+
+
     public void EnterState(TutorialEnemyController enemy)
     {
         enemy.health = 50; // HPを設定
@@ -30,7 +32,9 @@ public class Level5State : ITutorialEnemy
         // 体力が0になったらタイトルシーンへ切り替え
         if (enemy.health <= 0)
         {
-            SceneManager.LoadScene("TitleScene");
+            // 現在のシーンを記録してから遷移
+            ButtonManager.RecordCurrentScene();
+            SceneManager.LoadScene("ResultScene");
             return;
         }
 

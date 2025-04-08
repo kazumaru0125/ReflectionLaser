@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonManager : MonoBehaviour
+public class ResultButtonManager : MonoBehaviour
 {
     // 前のシーン名を保存する静的変数
     private static string previousScene = "";

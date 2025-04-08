@@ -33,7 +33,7 @@ public class Level5State : ITutorialEnemy
         if (enemy.health <= 0)
         {
             // Œ»Ý‚ÌƒV[ƒ“‚ð‹L˜^‚µ‚Ä‚©‚ç‘JˆÚ
-            ButtonManager.RecordCurrentScene();
+            ResultButtonManager.RecordCurrentScene();
             SceneManager.LoadScene("ResultScene");
             return;
         }

@@ -311,7 +311,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 666094717}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: ResultButtonManager, Assembly-CSharp
         m_MethodName: TappedButton
         m_Mode: 5
         m_Arguments:

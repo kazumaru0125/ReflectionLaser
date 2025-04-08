@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage1
+  m_text: Stage2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 288368654}
   - component: {fileID: 288368653}
   - component: {fileID: 288368652}
+  - component: {fileID: 288368655}
   m_Layer: 5
   m_Name: Stage2
   m_TagString: Untagged
@@ -341,7 +342,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 288368653}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 288368655}
+        m_TargetAssemblyTypeName: SelectButtonManager, Assembly-CSharp
+        m_MethodName: TappedButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Stage2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &288368653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +393,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288368650}
   m_CullTransparentMesh: 1
+--- !u!114 &288368655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288368650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3811a3ad459efcb46942a460250ec148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &527819581
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,9 +626,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 3811a3ad459efcb46942a460250ec148, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
+      - m_Target: {fileID: 562710520}
+        m_TargetAssemblyTypeName: SelectButtonManager, Assembly-CSharp
+        m_MethodName: TappedButton
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -733,7 +758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage1
+  m_text: Stage3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1201,6 +1226,7 @@ GameObject:
   - component: {fileID: 1999892942}
   - component: {fileID: 1999892941}
   - component: {fileID: 1999892940}
+  - component: {fileID: 1999892943}
   m_Layer: 5
   m_Name: Stage3
   m_TagString: Untagged
@@ -1272,7 +1298,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1999892941}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1999892943}
+        m_TargetAssemblyTypeName: SelectButtonManager, Assembly-CSharp
+        m_MethodName: TappedButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Stage3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1999892941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,3 +1349,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999892938}
   m_CullTransparentMesh: 1
+--- !u!114 &1999892943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999892938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3811a3ad459efcb46942a460250ec148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

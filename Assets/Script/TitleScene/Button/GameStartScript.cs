@@ -64,15 +64,15 @@ public class GameStartScript : MonoBehaviour
 
     void ChangeScene()
         {
-        Debug.Log("シーンをSampleSceneに変更します。");
+        Debug.Log("シーンをSelectSceneに変更します。");
 
         if (Application.CanStreamedLevelBeLoaded("SampleScene"))
             {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("SelectScene");
             }
         else
             {
-            Debug.LogError("SampleSceneがBuild Settingsに追加されていないか、シーン名が間違っています。");
+            Debug.LogError("SelectSceneがBuild Settingsに追加されていないか、シーン名が間違っています。");
             }
         }
     }

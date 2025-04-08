@@ -1,16 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TitleCameraController : MonoBehaviour
     {
-
     private ITitleCameraState titleCurrentState;
+
+    [SerializeField] private GameStartScript gameStartScript; // GameStartScriptの参照を追加
+
     // Start is called before the first frame update
     private void Start()
         {
-        // 初期状態を設定（追従カメラ）
+        // 初期状態を設定（デフォルトカメラ）
         ChangeState(new TitleDefaultState());
+
+        // GameStartScriptのOnStartSequenceCompleteイベントをリスン
+        if (gameStartScript != null)
+            {
+            gameStartScript.OnStartSequenceComplete += OnStartSequenceComplete;
+            }
+        }
+
+    private void OnDestroy()
+        {
+        if (gameStartScript != null)
+            {
+            gameStartScript.OnStartSequenceComplete -= OnStartSequenceComplete;
+            }
+        }
+
+    private void OnStartSequenceComplete()
+        {
+        // ドアの演出が完了した後、カメラをズーム状態に遷移
+        ChangeState(new TitleZoomState());
         }
 
     private void Update()

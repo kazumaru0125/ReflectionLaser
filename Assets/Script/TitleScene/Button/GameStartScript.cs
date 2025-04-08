@@ -1,50 +1,59 @@
+ï»¿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameStartScript : MonoBehaviour
     {
+    public static GameStartScript Instance { get; private set; }
+
     [SerializeField] private Button startButton;
-    [SerializeField] private float moveDistance = 3f;   // ƒhƒA‚ğã‚É“®‚©‚·‹——£
-    [SerializeField] private float moveDuration = 2f;   // “®‚©‚·ŠÔi•bj
+    [SerializeField] private float moveDistance = 3f;
+    [SerializeField] private float moveDuration = 2f;
 
     private GameObject doorObject;
+
+    // âœ… ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸé€šçŸ¥ï¼ˆãƒ‰ã‚¢æ¼”å‡ºå®Œäº†å¾Œï¼‰
+    public event Action OnStartSequenceComplete;
+
+    void Awake()
+        {
+        if (Instance != null && Instance != this)
+            {
+            Destroy(gameObject);
+            return;
+            }
+        Instance = this;
+        }
 
     void Start()
         {
         if (startButton != null)
             {
             startButton.onClick.AddListener(OnStartButtonClicked);
-            Debug.Log("ƒ{ƒ^ƒ“‚ÌƒŠƒXƒi[‚ğİ’è‚µ‚Ü‚µ‚½B");
             }
         else
             {
-            Debug.LogError("startButton‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+            Debug.LogError("startButtonãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ï¼");
             }
 
-        // DoorƒIƒuƒWƒFƒNƒg‚ğæ“¾
         doorObject = GameObject.FindWithTag("Door");
-        if (doorObject == null)
-            {
-            Debug.LogError("ƒ^ƒO'Door'‚ÌƒIƒuƒWƒFƒNƒg‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñI");
-            }
         }
 
     void OnStartButtonClicked()
         {
-        Debug.Log("ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½BƒhƒA‚ğã‚É“®‚©‚µ‚Ü‚·B");
         if (doorObject != null)
             {
-            StartCoroutine(MoveDoorAndChangeScene());
+            StartCoroutine(MoveDoorAndNotify());
             }
         else
             {
-            ChangeScene(); // ƒhƒA‚ª‚È‚¢ê‡‚Í‚»‚Ì‚Ü‚ÜƒV[ƒ“‘JˆÚ
+            // ãƒ‰ã‚¢ãŒãªã„ã¨ãã‚‚é€šçŸ¥
+            OnStartSequenceComplete?.Invoke();
             }
         }
 
-    IEnumerator MoveDoorAndChangeScene()
+    IEnumerator MoveDoorAndNotify()
         {
         Vector3 startPos = doorObject.transform.position;
         Vector3 endPos = startPos + Vector3.up * moveDistance;
@@ -59,20 +68,7 @@ public class GameStartScript : MonoBehaviour
 
         doorObject.transform.position = endPos;
 
-        ChangeScene();
-        }
-
-    void ChangeScene()
-        {
-        Debug.Log("ƒV[ƒ“‚ğSelectScene‚É•ÏX‚µ‚Ü‚·B");
-
-        if (Application.CanStreamedLevelBeLoaded("SampleScene"))
-            {
-            SceneManager.LoadScene("SelectScene");
-            }
-        else
-            {
-            Debug.LogError("SelectScene‚ªBuild Settings‚É’Ç‰Á‚³‚ê‚Ä‚¢‚È‚¢‚©AƒV[ƒ“–¼‚ªŠÔˆá‚Á‚Ä‚¢‚Ü‚·B");
-            }
+        // âœ… é€šçŸ¥ã‚’é€ã‚‹ï¼ˆã‚·ãƒ¼ãƒ³é·ç§»ã¯SceneTransitionManagerã«ä»»ã›ã‚‹ï¼‰
+        OnStartSequenceComplete?.Invoke();
         }
     }

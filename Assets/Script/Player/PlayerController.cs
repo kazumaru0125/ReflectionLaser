@@ -6,7 +6,10 @@ public class PlayerController : MonoBehaviour
     {
     //Player‚ÌStateŠÖŒW
     private IPlayerState       currentState;
+
+
     public PlayerIdlingState   idleState      = new PlayerIdlingState();
+
     public PlayerMovingState   movingState    = new PlayerMovingState();
     public PlayerShootingState shootingState  = new PlayerShootingState();
     public PlayerGuidingState  guidingState   = new PlayerGuidingState();

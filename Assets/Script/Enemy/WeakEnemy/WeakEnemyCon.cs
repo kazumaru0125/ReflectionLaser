@@ -19,7 +19,7 @@ public class WeakEnemyCon : MonoBehaviour
     void Update()
     {
         // 左クリック検知
-        if (Input.GetMouseButton(0))
+        if (!Input.GetMouseButton(0))
         {
             // 状態遷移ロジック
             if (currentState != wanderState)

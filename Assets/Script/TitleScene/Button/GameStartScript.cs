@@ -15,7 +15,7 @@ public class GameStartScript : MonoBehaviour
         {
         if (Instance != null && Instance != this)
             {
-            Destroy(gameObject);
+       //     Destroy(gameObject);
             return;
             }
         Instance = this;

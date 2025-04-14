@@ -8,6 +8,8 @@ public class PlayerShootingState : IPlayerState
         {
         Debug.Log("Entered Shooting State");
         Shoot(player);
+
+        player.SetAnimBool("IsShooting", true);
         }
 
     public void UpdateState(PlayerController player)

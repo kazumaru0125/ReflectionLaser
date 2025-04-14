@@ -13,6 +13,13 @@ public class PlayerIdlingState : IPlayerState
         // State‘¤‚Å‚Í
         player.SetAnimBool("IsMoving", false);
 
+        player.SetAnimBool("IsAiming", false);
+
+        player.SetAnimBool("IsShooting", false);
+
+
+        player.SetAnimBool("IsDead", false);
+
         }
 
     public void UpdateState(PlayerController player)
@@ -23,6 +30,10 @@ public class PlayerIdlingState : IPlayerState
     public void ExitState(PlayerController player)
         {
         Debug.Log("Exiting Idle State");
+        }
+    private void ResetFlag()
+        {
+
         }
 
 

@@ -6,7 +6,12 @@ public class PlayerMovingState : IPlayerState
 {
     public void EnterState(PlayerController player)
         {
-       // Debug.Log("Entered Moving State");
+        // Debug.Log("Entered Moving State");
+
+        //  player.animator.SetBool("IsMoving", true);
+        // State‘¤‚Å‚Í
+        player.SetAnimBool("IsMoving", true);
+
         }
 
     public void UpdateState(PlayerController player)

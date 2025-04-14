@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerIdlingState : IPlayerState
-{
+    {
     public void EnterState(PlayerController player)
         {
         Debug.Log("Entered Idle State");
+
+        // player.animator.SetBool("IsMoving", false);
+
+        // State‘¤‚Å‚Í
+        player.SetAnimBool("IsMoving", false);
+
         }
 
     public void UpdateState(PlayerController player)
@@ -18,4 +24,6 @@ public class PlayerIdlingState : IPlayerState
         {
         Debug.Log("Exiting Idle State");
         }
+
+
     }

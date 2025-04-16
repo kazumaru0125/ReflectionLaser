@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 114355183}
   - component: {fileID: 114355182}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11500000, guid: 10b410630c8b1284b90248129037c3b1, type: 3}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -512,8 +512,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367919753}
   m_LocalRotation: {x: 0.49983722, y: -0.38297465, z: 0.024718564, w: 0.77645487}
-  m_LocalPosition: {x: 12.14, y: 0.19, z: -3.37}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 12.140015, y: 0.19000244, z: -3.37}
+  m_LocalScale: {x: 1.0000001, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -716,8 +716,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681823171}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0000047683716, y: 0, z: 0.000002861023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1262,7 +1262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8e153e5dcc8c94bbe10da3fefdc5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartScript: {fileID: 0}
+  gameStartScript: {fileID: 1481998715}
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8e153e5dcc8c94bbe10da3fefdc5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartScript: {fileID: 0}
+  gameStartScript: {fileID: 1481998715}
 --- !u!1 &981713859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,7 +1287,6 @@ GameObject:
   - component: {fileID: 981713860}
   - component: {fileID: 981713861}
   - component: {fileID: 981713862}
-  - component: {fileID: 981713863}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: NoDeleteObject
@@ -1339,19 +1338,6 @@ MonoBehaviour:
   doorObject: {fileID: 863612074}
   moveDistance: 3
   moveDuration: 2
---- !u!114 &981713863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981713859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b410630c8b1284b90248129037c3b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startButton: {fileID: 114355182}
 --- !u!1 &1215186115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,7 +1610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b410630c8b1284b90248129037c3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 114355182}
+  startButton: {fileID: 0}
 --- !u!4 &1481998716
 Transform:
   m_ObjectHideFlags: 0
@@ -2206,7 +2192,7 @@ GameObject:
   - component: {fileID: 2022943044}
   - component: {fileID: 2022943043}
   m_Layer: 5
-  m_Name: GameStart
+  m_Name: GamStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

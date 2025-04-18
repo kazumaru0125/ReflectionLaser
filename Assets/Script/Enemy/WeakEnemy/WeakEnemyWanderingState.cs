@@ -12,7 +12,7 @@ public class WeakEnemyWanderingState : IWeakEnemyState
     {
         Debug.Log("1919114514");
         direction = 1;
-        targetX = 30f; // 初期目標を右端に設定
+        targetX = 10f; // 初期目標を右端に設定
         UpdateRotation(weakenemy);
     }
 

@@ -9,9 +9,9 @@ public class GageController : MonoBehaviour
     public Slider SESlider;
 
     public Button resetButton;  // 追加: ボタンの参照
-    public float maxBGMVol = 1;
+    public float maxBGMVol = 20;
 
-    public float maxSEVol = 1f;
+    public float maxSEVol = 20f;
 
     void Start()
         {
@@ -33,7 +33,8 @@ public class GageController : MonoBehaviour
 
 
         SESlider.maxValue = maxSEVol;
-        SESlider.value = maxSEVol;
+        SESlider.value = maxSEVol * 0.5f;
+
         // ボタンが押されたときにResetGageToHalfを呼び出す
         resetButton.onClick.AddListener(ResetGageToHalf);
         }

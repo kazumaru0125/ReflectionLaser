@@ -4,8 +4,8 @@ public class SoundManager : MonoBehaviour
     {
     public static SoundManager Instance { get; private set; }
 
-    [Range(0f, 1f)] public float BgmVolume = 1f;
-    [Range(0f, 1f)] public float SeVolume = 1f;
+    [Range(0f, 20f)] public float BgmVolume = 10f;
+    [Range(0f, 20f)] public float SeVolume = 10f;
 
     public AudioSource bgmSource;
     public AudioSource[] seSources;

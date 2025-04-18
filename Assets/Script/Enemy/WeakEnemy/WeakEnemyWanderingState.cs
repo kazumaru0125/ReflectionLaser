@@ -35,7 +35,7 @@ public class WeakEnemyWanderingState : IWeakEnemyState
         {
             // •ûŒü“]Š·ˆ—
             direction *= -1;
-            targetX = (direction == 1) ? 30f : -30f;
+            targetX = (direction == 1) ? 10f : -10f;
             UpdateRotation(weakenemy);
         }
     }

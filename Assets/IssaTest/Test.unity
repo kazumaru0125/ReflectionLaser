@@ -599,7 +599,6 @@ GameObject:
   - component: {fileID: 839288008223245406}
   - component: {fileID: 1328214628412541751}
   - component: {fileID: 605515535843964384}
-  - component: {fileID: 4673614592427514723}
   - component: {fileID: 4673614592427514724}
   m_Layer: 0
   m_Name: Group1
@@ -608,24 +607,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4673614592427514723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4673614592427514722}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff9c3108b4029384d91041d460526fdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxTiltAngle: 50
-  tiltSpeed: 5
-  returnSpeed: 3
-  targetRotation: {x: 0, y: 0, z: 0, w: 0}
-  isMoving: 0
-  controller: {fileID: 0}
 --- !u!114 &4673614592427514724
 MonoBehaviour:
   m_ObjectHideFlags: 0

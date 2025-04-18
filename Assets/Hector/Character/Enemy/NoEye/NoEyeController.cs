@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class PlayerControllerXP : MonoBehaviour
+public class NoEyeController : MonoBehaviour
 {
-    private IPlayerStateXP currentState;              // 現在の状態
+    private INoEyeState currentState;              // 現在の状態
 
 
     void Start()
     {
-        ChangeState(new StandPlayerXP());             // 初期状態を設定
+        ChangeState(new StandNoEye());             // 初期状態を設定
 
     }
 
@@ -20,7 +20,7 @@ public class PlayerControllerXP : MonoBehaviour
     }
 
     // 状態を変更する
-    public void ChangeState(IPlayerStateXP newState)
+    public void ChangeState(INoEyeState newState)
     {
         currentState = newState;       // 新しい状態に切り替え
         currentState.EnterState(this); // 新しい状態の開始処理を実行

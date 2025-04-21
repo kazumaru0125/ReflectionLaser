@@ -1,51 +1,68 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletsScript : MonoBehaviour
     {
-    public int speed = 10;  // ‰‘¬“x
-    public int initialDamage = 10; // ‰Šúƒ_ƒ[ƒW
-    private Vector3 velocity;  // is•ûŒü‚Æ‘¬“x
-    public int currentDamage; // Œ»İ‚Ìƒ_ƒ[ƒW
-    private Renderer bulletRenderer;  // ’e‚ÌRenderer
+    public int speed = 10;  // åˆé€Ÿåº¦
+    public int initialDamage = 10; // åˆæœŸãƒ€ãƒ¡ãƒ¼ã‚¸
+    private Vector3 velocity;  // é€²è¡Œæ–¹å‘ã¨é€Ÿåº¦
+    public int currentDamage; // ç¾åœ¨ã®ãƒ€ãƒ¡ãƒ¼ã‚¸
+    private Renderer bulletRenderer;  // å¼¾ã®Renderer
 
-    private GaugeController gaugeController; // HPŠÇ—ƒNƒ‰ƒX
+    private GaugeController gaugeController; // HPç®¡ç†ã‚¯ãƒ©ã‚¹
 
-    // F‚ğ‹­’²‚µ‚½ŒÜ’iŠK
+    // ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã®Prefabã‚’Inspectorã§å‰²ã‚Šå½“ã¦
+    public ParticleSystem trailParticle;
+
+    private ParticleSystem currentTrail;
+
+    // è‰²ã‚’å¼·èª¿ã—ãŸäº”æ®µéš
     private readonly Color[] damageColors = new Color[] {
-        new Color(0f, 1f, 1f),    // …F
-        new Color(0.5f, 1f, 0f),  // ‰©—Î
-        new Color(1f, 1f, 0f),    // ‰©F
-        new Color(1f, 0f, 0f),    // Ô
-        new Color(1f, 0f, 1f)     // ‡
+        new Color(0f, 1f, 1f),    // æ°´è‰²
+        new Color(0.5f, 1f, 0f),  // é»„ç·‘
+        new Color(1f, 1f, 0f),    // é»„è‰²
+        new Color(1f, 0f, 0f),    // èµ¤
+        new Color(1f, 0f, 1f)     // ç´«
     };
 
     void Start()
         {
-        gaugeController = FindObjectOfType<GaugeController>(); // HPŠÇ—ƒNƒ‰ƒX‚ğæ“¾
+        gaugeController = FindObjectOfType<GaugeController>();
         if (gaugeController == null)
             {
-            Debug.LogError("GaugeController‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñI");
+            Debug.LogError("GaugeControllerãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ï¼");
             return;
             }
 
         if (gaugeController.GetCurrentHP() <= 0)
             {
-            Destroy(gameObject); // HP‚ª0‚È‚ç’e‚ğíœ
+            Destroy(gameObject);
             return;
             }
 
-        velocity = transform.forward * speed; // ‰‘¬“x‚ğİ’è
-        currentDamage = initialDamage;  // ‰Šúƒ_ƒ[ƒW‚Ìİ’è
-        bulletRenderer = GetComponent<Renderer>();  // Renderer‚Ìæ“¾
-        ChangeBulletColor();  // ‰ŠúF‚Ìİ’è
+        velocity = transform.forward * speed;
+        currentDamage = initialDamage;
+        bulletRenderer = GetComponent<Renderer>();
+        ChangeBulletColor();
+
+        // ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã®ç”Ÿæˆ
+        if (trailParticle != null)
+            {
+            currentTrail = Instantiate(trailParticle, transform.position, Quaternion.identity, transform);
+            var main = currentTrail.main;
+            main.startColor = bulletRenderer.material.color;  // å¼¾ã®è‰²ã¨åˆã‚ã›ã‚‹
+            }
         }
 
     void Update()
         {
-        // –ˆƒtƒŒ[ƒ€A‹…‚ÌˆÊ’u‚ğXV
         transform.position += velocity * Time.deltaTime;
+        // ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ãŒé€²è¡Œæ–¹å‘ã‚’å‘ãã‚ˆã†ã«ã™ã‚‹
+        if (currentTrail != null)
+            {
+            currentTrail.transform.forward = velocity.normalized;
+            }
         }
 
     void OnCollisionEnter(Collision collision)
@@ -58,7 +75,6 @@ public class BulletsScript : MonoBehaviour
             Vector3 reflectDir = Vector3.Reflect(incoming.normalized, normal);
             velocity = reflectDir * speed;
 
-            // ƒ_ƒ[ƒW‘‰Á•F•ÏX
             currentDamage = Mathf.Min(currentDamage + 10, 50);
             ChangeBulletColor();
             }
@@ -71,7 +87,15 @@ public class BulletsScript : MonoBehaviour
     void ChangeBulletColor()
         {
         int colorIndex = Mathf.Min(Mathf.FloorToInt(currentDamage / 10f), damageColors.Length - 1);
-        bulletRenderer.material.color = damageColors[colorIndex];
+        Color newColor = damageColors[colorIndex];
+        bulletRenderer.material.color = newColor;
+
+        // ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã®è‰²ã‚‚æ›´æ–°
+        if (currentTrail != null)
+            {
+            var main = currentTrail.main;
+            main.startColor = newColor;
+            }
         }
 
     public float GetDamage()

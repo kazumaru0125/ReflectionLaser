@@ -4,14 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Gun
-  - Mirror
-  - floor
+  - Floor
   - Wall
-  - Bullet
-  - Door
-  - NoDeleteObject
-  - UI
+  - OuterCorner
+  - Room
   layers:
   - Default
   - TransparentFX

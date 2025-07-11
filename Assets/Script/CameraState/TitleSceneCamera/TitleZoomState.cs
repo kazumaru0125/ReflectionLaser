@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TitleZoomState : ITitleCameraState
     {
-    private float zoomTargetZ = 10f; // ズームイン後のZ軸位置（近づく）
+    private float zoomTargetZ = 6f; // ズームイン後のZ軸位置（近づく）
     private float zoomSpeed = 1f; // ズーム速度
     private bool zoomComplete = false; // ズームイン完了フラグ
 

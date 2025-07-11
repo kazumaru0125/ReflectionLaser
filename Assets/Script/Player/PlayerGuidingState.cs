@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerGuidingState : IPlayerState
 {
     private LineRenderer lineRenderer;
-    private int maxReflections = 5; // 最大反射回数
+    private int maxReflections = 2; // 最大反射回数
     private Color[] reflectionColors = { Color.cyan, Color.green, Color.yellow, Color.red, Color.magenta };
+
+    private Color reflectionColor = Color.cyan;
 
     public void EnterState(PlayerController player)
     {
@@ -73,7 +75,9 @@ public class PlayerGuidingState : IPlayerState
         int reflections = 0;
 
         // 最初の色（0回反射: 水色）
-        colors.Add(reflectionColors[0]);
+      //  colors.Add(reflectionColors[0]);
+
+        colors.Add(reflectionColor);
 
         while (reflections < maxReflections - 1)
         {
@@ -82,8 +86,9 @@ public class PlayerGuidingState : IPlayerState
             {
                 currentPosition = hit.point;
                 positions.Add(currentPosition);
-                colors.Add(reflectionColors[Mathf.Min(reflections + 1, reflectionColors.Length - 1)]);
+              //  colors.Add(reflectionColors[Mathf.Min(reflections + 1, reflectionColors.Length - 1)]);
 
+                colors.Add(reflectionColor);
                 currentDirection = Vector3.Reflect(currentDirection, hit.normal);
                 reflections++;
             }
@@ -91,7 +96,9 @@ public class PlayerGuidingState : IPlayerState
             {
                 // 反射せずにまっすぐ進む場合
                 positions.Add(currentPosition + currentDirection * 100f);
-                colors.Add(reflectionColors[reflections]);
+              //  colors.Add(reflectionColors[reflections]);
+
+                colors.Add(reflectionColor);
                 break;
             }
         }

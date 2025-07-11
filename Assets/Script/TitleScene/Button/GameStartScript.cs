@@ -15,7 +15,7 @@ public class GameStartScript : MonoBehaviour
         {
         if (Instance != null && Instance != this)
             {
-            Destroy(gameObject);
+       //     Destroy(gameObject);
             return;
             }
         Instance = this;
@@ -23,14 +23,22 @@ public class GameStartScript : MonoBehaviour
 
     void Start()
         {
-        if (startButton != null)
+        if (startButton == null)
             {
-            startButton.onClick.AddListener(OnStartButtonClicked);
+            GameObject buttonObj = GameObject.Find("StartButton");
+            if (buttonObj != null)
+                {
+                startButton = buttonObj.GetComponent<Button>();
+                }
             }
-        else
+
+        if (startButton == null)
             {
-            Debug.LogError("startButtonがアタッチされていません！");
+            Debug.LogError("startButtonが見つかりません！");
+            return;
             }
+
+        startButton.onClick.AddListener(OnStartButtonClicked);
         }
 
     void OnStartButtonClicked()

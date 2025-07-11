@@ -11,20 +11,22 @@ public class PlayerGuidingState : IPlayerState
     private Color reflectionColor = Color.cyan;
 
     public void EnterState(PlayerController player)
-    {
+        {
         Debug.Log("Entered Guiding State");
 
         // LineRenderer ‚Ì‰Šú‰»
         lineRenderer = player.GetComponent<LineRenderer>();
         if (lineRenderer == null)
-        {
+            {
             lineRenderer = player.gameObject.AddComponent<LineRenderer>();
-        }
+            }
 
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-    }
+
+        player.SetAnimBool("IsAiming", true);
+        }
 
     public void UpdateState(PlayerController player)
     {

@@ -5,20 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
     {
     //PlayerのState関係
-    private IPlayerState       currentState;
+    private IPlayerState currentState;
 
 
-    public PlayerIdlingState   idleState      = new PlayerIdlingState();
+    public PlayerIdlingState idleState = new PlayerIdlingState();
 
-    public PlayerMovingState   movingState    = new PlayerMovingState();
-    public PlayerShootingState shootingState  = new PlayerShootingState();
-    public PlayerGuidingState  guidingState   = new PlayerGuidingState();
-    public PlayerDyingState    dyingState     = new PlayerDyingState();
+    public PlayerMovingState movingState = new PlayerMovingState();
+    public PlayerShootingState shootingState = new PlayerShootingState();
+    public PlayerGuidingState guidingState = new PlayerGuidingState();
+    public PlayerDyingState dyingState = new PlayerDyingState();
 
     //外部Class
     private GaugeController gaugeController; // HP管理クラス
 
     private bool isClickDown = false; // 左クリックが押されているか
+
+    public Animator animator;
+
 
     public float moveSpeed = 5f;
     public GameObject bulletPrefab;
@@ -38,7 +41,7 @@ public class PlayerController : MonoBehaviour
             }
 
 
-              gaugeController = FindObjectOfType<GaugeController>(); // HP管理クラスを取得
+        gaugeController = FindObjectOfType<GaugeController>(); // HP管理クラスを取得
         if (gaugeController == null)
             {
             Debug.LogError("GaugeControllerが見つかりません！");
@@ -62,7 +65,7 @@ public class PlayerController : MonoBehaviour
         if (gaugeController.GetCurrentHP() <= 0)
             {
             //死亡警告状態に切り替え
-             ChangeState(dyingState);
+            ChangeState(dyingState);
             }
 
         // 左クリックが押されている間、GuideState に遷移
@@ -149,4 +152,12 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("New state is the same as the current state or is null.");
             }
         }
+
+    public void SetAnimBool(string paramName, bool value)
+        {
+        animator.SetBool(paramName, value);
+        }
+
+
+
     }

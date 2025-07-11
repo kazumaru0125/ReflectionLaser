@@ -101,6 +101,7 @@ MonoBehaviour:
   speed: 10
   initialDamage: 0
   currentDamage: 0
+  trailParticle: {fileID: 7735924097049917052, guid: e825b1e65997427429896918e6ed7783, type: 3}
 --- !u!54 &8485405360289817705
 Rigidbody:
   m_ObjectHideFlags: 0
